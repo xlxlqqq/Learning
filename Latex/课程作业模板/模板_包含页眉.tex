@@ -2,15 +2,17 @@
 % 完整编译: xelatex -> bibtex -> xelatex -> xelatex
 \documentclass[lang=cn,11pt,a4paper,cite=authoryear]{elegantpaper}
 
-\title{论文标题}
+\title{论文标题123}
 \author{周晓龙}
 \date{\today}
 
 % 本文档命令
 \usepackage{array}
+\usepackage{xcolor}
 \usepackage{ctex}  %使用宏包(为了能够显示汉字)
 \usepackage{datetime}   %使用日期
 \usepackage{cite}
+\usepackage{listings}
 \usepackage{fancyhdr}
 	\pagestyle{fancy}
 	\lhead{ } 
@@ -23,6 +25,35 @@
 \newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
 \renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
 % \newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}
+
+
+% 代码的初始化
+\lstset{
+    basicstyle          =   \sffamily,          % 基本代码风格
+    keywordstyle        =   \bfseries,          % 关键字风格
+    commentstyle        =   \rmfamily\itshape,  % 注释的风格，斜体
+    stringstyle         =   \ttfamily,  % 字符串风格
+    flexiblecolumns,                % 别问为什么，加上这个
+    numbers             =   left,   % 行号的位置在左边
+    showspaces          =   false,  % 是否显示空格，显示了有点乱，所以不现实了
+    numberstyle         =   \zihao{-5}\ttfamily,    % 行号的样式，小五号，tt等宽字体
+    showstringspaces    =   false,
+    captionpos          =   t,      % 这段代码的名字所呈现的位置，t指的是top上面
+    frame               =   lrtb,   % 显示边框
+}
+
+\lstdefinestyle{Python}{
+    language        =   Python, % 语言选Python
+    basicstyle      =   \zihao{-5}\ttfamily,
+    numberstyle     =   \zihao{-5}\ttfamily,
+    keywordstyle    =   \color{blue},
+    keywordstyle    =   [2] \color{teal},
+    stringstyle     =   \color{magenta},
+    commentstyle    =   \color{red}\ttfamily,
+    breaklines      =   true,   % 自动换行，建议不要写太长的行
+    columns         =   fixed,  % 如果不加这一句，字间距就不固定，很丑，必须加
+    basewidth       =   0.5em,
+}
 
 
 
@@ -603,6 +634,14 @@ MFC因其质轻、柔韧性好、灵敏度高且能量密度大等特点，在�
   % \bibitem{ref12}
   
 \end{thebibliography}
+
+\clearpage
+\section{附录}
+\lstinputlisting[
+    style       =   Python,
+    caption     =   {\bf xx.py},
+    label       =   {xx.py}
+]{media.py}
 
 
 \end{document}
